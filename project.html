@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* First page styling */
+        .first-page {
+            background-image: url('https://cdn.wallpapersafari.com/51/27/78VlbA.jpg');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heading {
+            color: white;
+            font-size: 60px;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a:hover {
+            color: #007BFF;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Full-width input fields */
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #04AA6D;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .container {
+            padding: 16px;
+            border-radius: 10px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 10px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            animation: animatezoom 0.6s;
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+
+        .homepage,
+        .jobspage,
+        .companiespage,
+        .contactpage {
+            height: 100vh;
+            display: none;
+        }
+
+        .homepage {
+            background-image: url('https://c1.wallpaperflare.com/preview/80/193/318/job-job-offer-workplace-job-search.jpg');
+            background-size: cover;
+        }
+
+        .topnav {
+            overflow: hidden;
+            float: right;
+            padding: 10px;
+        }
+
+        .topnav a {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+        .jobspage {
+            background-image: url('https://img.freepik.com/premium-vector/jobs-search-recruitment-hiring-employment-find-job-openings-opportunities-career-growth-young-unemployed-man-uses-magnifying-glass-search-recruitment-illustration_327176-1666.jpg');
+            background-size: cover;
+        }
+
+
+
+        .contactpage {
+            background-color: #ff657d;
+            color: white;
+            padding: 20px;
+            font-family: Sans-Serif;
+            text-align: center;
+            height: 100%;
+            background-size: cover;
+
+        }
+
+        .contactpage h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .contactpage p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+
+        .contactpage form {
+            max-width: 800px;
+            margin: auto;
+            padding: 8px;
+
+        }
+
+        .contactpage input,
+        .contactpage textarea {
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            resize: vertical;
+        }
+
+        .contactpage {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .email {
+            color: #3376fe;
+            font-weight: bold;
+        }
+
+        /* Search bar styling */
+        .search-container {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .search-container input[type="text"] {
+            width: 80%;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .search-container .search-button {
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            background-color: #04AA6D;
+            color: white;
+            cursor: pointer;
+            width: 50%;
+            margin: 10px;
+        }
+
+        .tenthJobPages {
+            background: linear-gradient(to left, #d8b5ff, #1eae98);
+            padding: 10px;
+            text-align: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        .twelthJobPages {
+            background: linear-gradient(to left, #d8b5ff, #1eae98);
+            padding: 10px;
+            text-align: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        .MBAJobPages {
+            background: linear-gradient(to left, #d8b5ff, #1eae98);
+            padding: 10px;
+            text-align: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        .BtechJobPages {
+            background: linear-gradient(to left, #d8b5ff, #1eae98);
+            padding: 10px;
+            text-align: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        .job-cards {
+            height: cover;
+            width: 95%;
+            background-color: white;
+            color: black;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        .job-cards h3 {
+            font-weight: 800;
+        }
+
+        .job-cards p {
+            text-align: left;
+            margin: 10px;
+            color: #474747;
+        }
+
+        /COMPANY SECTION/ .companiespage {
+            background-color: white;
+            height: 100vh;
+            padding: 8px;
+            text-align: center;
+            background-size: cover;
+        }
+
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            /* Space between the cards */
+            padding: 20px;
+            /* Padding around the grid */
+        }
+
+        .company-card {
+            background-color: #C3C5C6;
+            /* Background color for cards */
+            border-radius: 10px;
+            /* Rounded corners */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            text-align: center;
+            /* Center the text and image */
+            padding: 10px;
+            /* Padding inside the card */
+            position: cursor;
+        }
+
+        .company-card img {
+            width: 100%;
+            /* Make images responsive */
+            height: 80%;
+            /* Maintain aspect ratio */
+            border-radius: 10px;
+            /* Rounded corners for images */
+        }
+
+        .company-card h3 {
+            margin-top: 8px;
+            /* Space above the heading */
+        }
+
+        .workexperience {
+            background-color: #ffcad0;
+            height: 100vh;
+            padding: 10px;
+        }
+
+        .applybtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #0BA3DB;
+            border-radius: 8px;
+        }
+
+        .applicationform {
+            background: linear-gradient(to left, #d8b5ff, #1eae98);
+            padding: 10px;
+            text-align: center;
+            align-items: center;
+            background-size: cover;
+        }
+
+        .checkbox-group {
+            margin-top: 15px;
+        }
+
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .modalapplication {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-contentapplication {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .summary {
+            display: none;
+            /* Hidden initially */
+            padding: 15px;
+            border: 1px solid #ccc;
+            margin-top: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- First page with job portal login link -->
+    <div id="firstpage" class="first-page">
+        <h2 class="heading">
+            <a href="#id01" onclick="document.getElementById('id01').style.display='block'">Job Portal Login</a>
+        </h2>
+    </div>
+
+    <!-- Second page (login form) -->
+    <div id="id01" class="modal">
+        <form class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <img src="https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-female-5-512.png" alt="Avatar" class="avatar">
+            </div>
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button type="button" onclick="redirectToHomePage()">Login</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot password?</span>
+            </div>
+        </form>
+    </div>
+
+    <!-- Home Page with Nav Bars -->
+    <div id="id02" class="homepage">
+        <div class="topnav">
+            <a href="#home" onclick="showSection('id02')">Home</a>
+            <a href="#jobs" onclick="showSection('jobs')">Jobs</a>
+            <a href="#companies" onclick="showSection('companies')">Companies</a>
+            <a href="#contact" onclick="showSection('contact')">Contact</a>
+        </div>
+    </div>
+
+    <!-- Jobs Page -->
+    <section id="jobs" class="jobspage">
+        <div class="search-container">
+            <input type="text" placeholder="Search for jobs...">
+            <button class="search-button" onclick="handleSearch()">Search</button>
+        </div>
+    </section>
+
+    <!-- Companies Page -->
+    <section id="companies" class="companiespage" style="display: none;">
+        <h1>Top Companies Hiring</h1>
+        <p>List of Companies Hiring with us!</p>
+        <div class="companies-grid">
+            <div class="company-card" id="#company-card1" onclick="showSection('workexperience')">
+                <img src="https://www.travelinusa.us/wp-content/uploads/sites/3/2017/12/Google-headquarters-Silicon-Valley.jpg" alt="google">
+                <h3>Google</h3>
+            </div>
+            <div class="company-card" id="#company-card1" onclick="showSection('workexperience')">
+                <img src="https://www.thestreet.com/.image/t_share/MTkzMTE3MTYzMzI0NzEyNTAx/microsoft_office_1_kl_101822.jpg" alt="microsoft">
+                <h3>Microsoft</h3>
+            </div>
+            <div class="company-card" id="#company-card1" onclick="showSection('workexperience')">
+                <img src="https://www.capitalism.com/wp-content/uploads/2020/11/Depositphotos_45177201_l-2015.jpg" alt="apple">
+                <h3>Apple</h3>
+            </div>
+            <div class="company-card" id="#company-card1" onclick="showSection('workexperience')">
+                <img src="https://www.techgenyz.com/wp-content/uploads/2020/09/infosys.jpg" alt="infosys">
+                <h3>Infosys</h3>
+            </div>
+            <div class="company-card" id="#company-card1" onclick="showSection('workexperience')">
+                <img src="https://analyticsindiamag.com/wp-content/uploads/2021/03/Wipro_AIM-1024x768.jpg" alt="wipro">
+                <h3>Wipro</h3>
+            </div>
+            <div class="company-card" id="#company-card1" onclick="showSection('workexperience')">
+                <img src="https://thumbs.dreamstime.com/z/prague-czech-republic-may-ibm-company-logo-headquarters-building-116972459.jpg" alt="IBM">
+                <h3>IBM</h3>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Page -->
+    <section id="contact" class="contactpage">
+        <h2>Get in Touch</h2>
+        <p>Have a Question or Comment? We'd like to hear from you!</p>
+        <form id="contactForm" onsubmit="handleContactForm(event)">
+            <label>Name:</label><input type="text" required>
+            <br>
+            <label>Email:</label><input type="email" required>
+            <br>
+            <label>Contact:</label><input type="tel" required>
+            <br>
+            <label>Message:</label><textarea required></textarea>
+            <button type="submit">Submit</button>
+            <p id="successMessage" style="color:#ff3333; display: none;">Thank you for your message! We will get back to you soon.</p>
+            <p class="email">jobhubportal@gmail.com</p>
+            <p class="email">9898908973</p>
+        </form>
+    </section>
+
+    <!--tenthjobspage -->
+    <section id="tenthJobs" class="tenthJobPages" style="display: none;">
+        <h2>BY 10th QUALIFICATION JOBS</h2>
+        <p style="font-weight:bold;">Here are job listings related to 10th Qualification</p>
+        <div class="job-cards">
+            <h3>Railway Group D jobs include positions like Track</h3>
+            <p>Maintainer, Pointsman, and Helper in various departments
+                Eligibility: 10th pass or ITI (Industrial Training Institute)
+                certificate
+                Age limit: 18-33 years.
+                <br>
+                ⁃ Selection process: Written test, Physical Efficiency Test
+                (PET), and Document Verification.
+                <br>
+                - Pay scale: Level 1 of the 7th CPc Pay Matrix (₹18,000-₹56.900).
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+        <div class="job-cards">
+            <h3>POLICE CONSTABLE</h3>
+            <p>- Police Constables are entry-level positions in the police force, responsible for maintaining law and order, investigating
+                crimes, and serving the community.
+                <br>
+                - Eligibility: 10th or 12th pass (depending on the state or union territory).
+                <br>
+                - Age limit: 18-25 years (rexable for reserved categories).
+                <br>
+                ⁃ Selection process: Written test, Physical Efficiency Test
+                (PET), Physical Measurement Test (PMT), and Medical Examinaton.
+                <br>
+                - Pay scale: Varies by state or union territory, but typically in the range of ₹21,000-₹69,000.
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+
+        <div class="job-cards">
+            <h3>POST OFFICE</h3>
+            <p>- Post Office jobs include positions like Postal Assistant, Sorting Assistant, Postman, Mail Gaurd, and Gramin Dak Sevak (GDS).
+                <br>
+                - Eligibility: 10th or 12th pass (depending on the post).
+                <br>
+                - Age limit: 18-27 years (rexable for reserved categories).
+                <br>
+                ⁃ Selection process: Written test, Physical Efficiency Test
+                (PET), and Document Verification.
+                <br>
+                - Pay scale: Varies by post, but typically in the range of ₹21,000-₹81,000.
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+    </section>
+
+    <!-- 12thjobpage -->
+    <section id="twelthJobs" class="twelthJobPages" style="display: none;">
+        <h2>BY 12th QUALIFICATION JOBS</h2>
+        <p>Here are job listings related to 12th Qualification</p>
+        <div class="job-cards">
+            <h3>GOVERNMENT CLERK JOBS</h3>
+            <p>Government Clerk jobs are entry-level positions in various government departments and ministries. Here are some key details:
+                <br>
+                - Eligibility: 12th standard (HSC) passed in any stream (Arts, Commerce, Science, etc.).
+                <br>
+                - Age limit: 18-27 years (rexable for reserved categories).
+                <br>
+                ⁃ Selection process: Written test, Interview, and/or Skill test
+                <br>
+                - Pay scale: ₹18,000-₹56,000(Level1 of 7th CPC Pay Matrix).
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+
+        <div class="job-cards">
+            <h3>NATIONAL DEFENCE ACADEMY</h3>
+            <p>The National Defence Academy (NDA) is a prestigious Institute that trains cadets to become officers in the Indian Armed Forces.
+                <br>
+                - Eligibility: 12th standard (HSC) passed/appearing in any stream(Arts, Commerce, Science, etc).
+                <br>
+                - Age limit: 16.5-19.5 years old.
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+
+        <div class="job-cards">
+            <h3>RAILWAY CLERKS</h3>
+            <p>Railway Clerks are responsible for managing railway operations, maintaining records, and providing customer service.
+                <br>
+                - Eligibility: 12th standard (HSC) passed/appearing in any stream(Arts, Commerce, Science, etc).
+                <br>
+                - Age limit: 18-27 years (relaxable for reserved categories)
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+    </section>
+
+    <!-- MBAjobspage -->
+    <section id="MBAjobs" class="MBAJobPages" style="display:none;">
+        <h2>BY MBA QUALIFICATION JOBS</h2>
+        <p>Here are job listings related to MBA Qualification</p>
+        <div class="job-cards">
+            <h3>MANAGEMENT CONSULTANT</h3>
+            <p>Industry: Consulting, Finance, Healthcare, IT, Manufacturing, Government, Non-profit, Retail, Hospitality, Energy
+                <br>
+                Work Experience:
+                <br>
+                2-5 years (entry-level), 5-10 years (senior-level), 10+ years (executive level)
+                <br>
+                Education:
+                <br>
+                - MBA (Master of Business Administration)
+                <br>
+                - Bachelor's Degree in a related field (e.g., Business, Management, Economics)
+                <br>
+                -Professional Certifications (e.g., CMC - Certified Management Consultant)
+                <br>
+                Salary Range (India):
+                <br>
+                -Entry-level: ₹500,000 - ₹800,000 per annum
+                <br>
+                -Senior-level: ₹1,000,000 - ₹2,000,000 per annum
+                <br>
+                -Executive-level: ₹2,500,000 - ₹5,000,000 per annum
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+
+        <div class="job-cards">
+            <h3>MARKETING MANAGER</h3>
+            <p>Industry: FMCG, Retail, E-commerce, Healthcare, Finance, Technology, Automotive
+                <br>
+                Work Experience:
+                <br>
+                5-8 years (entry-level), 8-12 years (senior-level), 12+ years (executive level)
+                <br>
+                Education:
+                <br>
+                - MBA (Master of Business Administration)
+                <br>
+                - Bachelor's Degree in a related field (e.g., Business, Communications)
+                <br>
+                Salary Range (India):
+                <br>
+                -Entry-level: ₹600,000 - ₹1,000,000 per annum
+                <br>
+                -Senior-level: ₹1,200,000 - ₹2,500,000 per annum
+                <br>
+                -Executive-level: ₹3,000,000 - ₹6,000,000 per annum
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+
+        <div class="job-cards">
+            <h3>IT MANAGER</h3>
+            <p>Industry: All industries, including Finance, Healthcare, Retail, IT, Manufacturing, Government
+                <br>
+                Work Experience:
+                <br>
+                5-10 years (entry-level), 10-15 years (senior-level), 15+ years (executive level)
+                <br>
+                Education:
+                <br>
+                - Bachelor's Degree in Computer Science, Information Technology, or related field
+                <br>
+                - Master's Degree in IT Management, Business Administration, or related field (preferred)
+                <br>
+                Salary Range (India):
+                <br>
+                -Entry-level: ₹800,000 - ₹1,200,000 per annum
+                <br>
+                -Senior-level: ₹1,500,000 - ₹2,500,000 per annum
+                <br>
+                -Executive-level: ₹3,000,000 - ₹6,000,000 per annum
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+    </section>
+
+    <!-- BTECHjobspage -->
+    <section id="Btechjobs" class="BtechJobPages" style="display: none;">
+        <h2>BY B-Tech QUALIFICATION JOBS</h2>
+        <p>Here are job listings related to B-Tech Qualification</p>
+        <div class="job-cards">
+            <h3>BUSINESS ANALYTICS</h3>
+            <p>Business Analysts work in various industries, including: (Finance and Banking, Healthcare, Technology, Retail, Manufacturing, Government, Consulting)
+                <br>
+                Work Experience:
+                <br>
+                5-10 years (entry-level), 10-15 years (senior-level), 15+ years (executive level)
+                <br>
+                QUALIFICATIONS:
+                <br>
+                1. A Bachelor's Degree in related field (e.g., business, computer science, information systems)
+                <br>
+                2. Professional certificattons (e.g., CHAP, CCHA, ITIL)
+                <br>
+                3. An MBA or master's degree in a related field (oprianat)
+                <br>
+                SALARY RANGE:
+                <br>
+                1. Entry-evel (0-3 vears): ₹400,000 - 7700;000 per annum
+                <br>
+                2. Mid-level (4-7 years): ₹800,000- ₹1,200,000 per annum
+                annum
+                <br>
+                3. Senior-level (8-12 years): ₹1,500,000 - ₹2,500,ooo per
+                annum
+                <br>
+                4. Lead/Manager-level (13+ years): ₹2,500,000 - ₹5,000,000 per annum
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+        <div class="job-cards">
+            <h3>SOFTWARE DEVELOPER</h3>
+            <p>
+                A Seftware Developer is a professional who designs , creates,
+                tests,-and maintains software applications
+                <br>
+                QUALIFICATIONS:
+                <br>
+                1. A bachelor's degree in Computer Science, Information
+                Technologv, or related field
+                <br>
+                2.Professional certifications (e.g., AWS Ceriffed Developer.
+                Certified Scrum Master)
+                <br>
+                3. A master's degree in Computer Srience or related field
+                (optional)
+                <br>
+                SALARY RANGE:
+                <br>
+                1 Entry-level (0-3 years): ₹400,000 - ₹700,000 per annum
+                <br>
+                2.Mid-level (4-7 years): ₹800,000 - ₹1,000,000 per annum
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+
+        <div class="job-cards">
+            <h3>WEB DEVELOPMENT</h3>
+            <p>Web development is the process af beuilding and maintaining
+                websites, web applications, and mobile applications.
+                <br>
+                Web developers work in various industries, including:
+                (Technology ,E-commerce, Healthcure, Finance, Education
+                Government, Non-profit)
+                <br>
+                QUALIFICATIONS:
+                <br>
+                1. A bachelor's degree in Computer Science, Information
+                Technology, or related field
+                <br>
+                2. Professional certifications (e.g, Certified Web Developer
+                Full Stack Developer)
+                <br>
+                3. A portfolio of personal er professional web development
+                prejects
+                <br>
+                SALARY RANGE:
+                <br>
+                1 Entry-level (0-3 years): ₹400,000 - ₹700,000 per annum
+                <br>
+                2 Mid-level (4-7 years): ₹800,000 - ₹1,200,000 per annum
+                <br>
+                3. Senior-level (8-12 years): ₹1,500,000 - ₹2,500,000 per
+                annum
+                <br>
+                4. Lead/Manager-level (13+ years): ₹2,500,000- ₹3,500,000 per annum
+            </p>
+            <button class="applybtn" onclick="showSection('applicationform')">Apply</button>
+        </div>
+
+
+    </section>
+
+    <section id="workexperience" class="workexperience" style="display:none;">
+        <h1 style="color:red; font-weight:800;">WORK ENVIRONMENT:</h1>
+        <P style="font-weight:bold;">Many employees highlight the positive work environment and the
+            company's focus on employee feedback and growth. However, some
+            reviews mention challenges with management and job security
+        </P>
+        <h1 style="color:red; font-weight:800;">SALARY:</h1>
+        <p style="font-weight:bold;">• Average Salary: The average salary at Microsoft varies
+            by role and experience. For instance, software engineer
+            swith 1-9 years of experience earn around ₹31.8 lakhs per year, while senior software engineers with 4-18 years of experience can earn up to ₹53 lakhs per year1.
+            <br>
+            • Benefits: Microsoft provides comprehensive benefits, including health insurance, retirement plans, and employee wellness programs
+        </p>
+    </section>
+
+    <section id="applicationform" class="applicationform" style="display:none;">
+        <form class="modal-contentapplication animate" onsubmit="submitApplication(event)" id="myform">
+            <div class="imgcontainer">
+                <span onclick="closeApplicationForm('applicationform')" class="close" title="Close Modal">&times;</span>
+                <h2>Job Application Form</h2>
+            </div>
+            <div class="container">
+                <label for="name"><b>Full Name:</b></label>
+                <input type="text" placeholder="Enter Your Name" id="name" name="name" required>
+                <label for="email"><b>Email:</b></label>
+                <input type="text" placeholder="Enter Your Email" id="email" name="email" required>
+
+                <label for="phonenumber"><b>Phone Number:</b></label>
+                <input type="text" placeholder="Enter Your Qualification" id="phonenumber" name="qualification" required>
+
+                <label for="linkedin"><b>Linkedin Profile:</b></label>
+                <input type="text" placeholder="Enter linkedin profile url" id="linkedin" name="linkedin" required>
+
+                <label for="experience"><b>Experience:</b></label>
+                <input type="text" placeholder="Enter Your Experience" id="experience" name="experience" required>
+
+                <div class="checkbox-group">
+                    <label><b>Positions</b></label>
+                    <label>
+                        <input type="checkbox" name="Positions" value="Developer"> Developer
+                    </label>
+                    <label>
+                        <input type="checkbox" name="Positions" value="Designer"> Designer
+                    </label>
+                    <label>
+                        <input type="checkbox" name="Positions" value="Manager"> Manager
+                    </label>
+                </div>
+                <label for="resume"><b>Upload Resume</b></label>
+                <input type="file" id="resume" accept=".pdf, .doc, .docx" optional>
+                <br>
+                <label for="coverletter"><b>Cover Letter</b></label>
+                <textarea type="textarea" id="coverletter" name="coverletter"></textarea>
+                <button type="submit">Submit </button>
+
+
+                <button type="button" onclick="closeApplicationForm('applicationform')" class="cancelbtn">Cancel</button>
+
+            </div>
+        </form>
+
+    </section>
+
+    <section id="applicationSummary" class="summary" style="display:none;">
+        <h2>Application Submitted Successfully</h2>
+        <p><b>Name:</b> <span id="summaryName"></span></p>
+        <p><b>Email:</b> <span id="summaryEmail"></span></p>
+        <p><b>Phone Number:</b> <span id="summaryPhonenumber"></span></p>
+        <p><b>Linkedin Profile:</b> <span id="summaryLinkedin"></span></p>
+        <p><b>Experience:</b> <span id="summaryExperience"></span></p>
+        <p><b>Positions:</b> <span id="summaryPositions"></span></p>
+        <p><b>Resume:</b> <span id="summaryResume"></span></p>
+        <p><b>Cover Letter:</b> <span id="summaryCoverletter"></span></p>
+    </section>
+
+    <script>
+        // Function to display the home page after login
+        function redirectToHomePage() {
+            document.getElementById('firstpage').style.display = "none";
+            document.getElementById('id01').style.display = "none";
+            document.getElementById('id02').style.display = "block";
+
+        }
+
+        // Function to show a specific section
+        let previousSectionId = null;
+
+        function showSection(sectionId) {
+            // Save the current visible section before showing the new one
+            previousSectionId = document.querySelector('section:not([style*="display: none"])')?.id;
+
+            // Hide all sections
+            document.querySelectorAll('.homepage, .jobspage, .companiespage, .contactpage, .searchJobPages, .workexperience, .applicationform, .tenthJobPages, .twelthJobPages, .MBAJobPages, .BtechJobPages').forEach(section => {
+                section.style.display = "none";
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = "block";
+        }
+
+        // Function to handle search
+        function handleSearch() {
+            const searchInput = document.querySelector('.search-container input[type="text"]').value;
+
+            // Check if the input is "10th"
+            if (searchInput === "10th") {
+                showSection('tenthJobs');
+            } else if (searchInput === "12th") {
+                showSection('twelthJobs');
+            } else if (searchInput.toLowerCase() === "mba") {
+                showSection('MBAjobs');
+            } else if (["btech", "BTECH"].includes(searchInput.toLowerCase())) {
+                showSection('Btechjobs');
+            } else {
+                alert("No results found for '" + searchInput + "'");
+            }
+        }
+
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                // Check if the "tenthJobs" section is currently visible
+                if (document.getElementById('tenthJobs').style.display === "block") {
+                    redirectToHomePage(); // Go to home page if "tenthJobs" is open
+                } else {
+                    closeApplicationForm(); // Otherwise, close application form or other sections
+                }
+            }
+        });
+        // Function to handle contact form submission
+        function handleContactForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+            document.getElementById('successMessage').style.display = 'block'; // Show success message
+            document.getElementById('contactForm').reset(); // Reset the form fields
+        }
+
+        // Function to close the application form and return to the previous section
+        function closeApplicationForm() {
+            if (previousSectionId) {
+                showSection(previousSectionId); // Return to the previous section
+                previousSectionId = null; // Reset the previous section ID
+            } else {
+                console.error("Previous section not found.");
+            }
+        }
+
+        function submitApplication(event) {
+            event.preventDefault(); // Prevent form from actually submitting
+
+            // Capture form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phonenumber = document.getElementById('phonenumber').value;
+            const linkedin = document.getElementById('linkedin').value;
+            const experience = document.getElementById('experience').value;
+
+            // Capture selected positions (checkbox values)
+            const positions = Array.from(document.querySelectorAll('input[name="Positions"]:checked')).map(position => position.value);
+            // Handle resume file (check if a file is selected)
+            const resumeInput = document.getElementById('resume');
+            const resumeFile = resumeInput.files[0];
+            const resumeName = resumeFile ? resumeFile.name : 'No file uploaded'; // Handle no file selected
+
+            const coverletter = document.getElementById('coverletter').value;
+
+            // Populate the summary with form values
+            document.getElementById('summaryName').innerText = name;
+            document.getElementById('summaryEmail').innerText = email;
+            document.getElementById('summaryPhonenumber').innerText = phonenumber;
+            document.getElementById('summaryLinkedin').innerText = linkedin;
+            document.getElementById('summaryExperience').innerText = experience;
+            document.getElementById('summaryPositions').innerText = positions.join(', ');
+            document.getElementById('summaryResume').innerText = resumeName;
+            document.getElementById('summaryCoverletter').innerText = coverletter;
+
+            // Hide the form and show the summary
+            document.getElementById('applicationform').style.display = 'none';
+            document.getElementById('applicationSummary').style.display = 'block';
+
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>
